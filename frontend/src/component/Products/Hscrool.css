@@ -1,0 +1,267 @@
+/* @import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.media-scroller {
+  --_spacer: var(--size-3);
+  display: grid;
+  gap: var(--_spacer);
+  grid-auto-flow: column;
+  grid-auto-columns: 21%;
+
+  padding: 0 var(--_spacer) var(--_spacer);
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.media-scroller--with-groups {
+  grid-auto-columns: 80%;
+}
+
+.media-group {
+  display: grid;
+  gap: var(--_spacer);
+  grid-auto-flow: column;
+}
+
+.media-element {
+  display: grid;
+  grid-template-rows: min-content;
+  gap: var(--_spacer);
+  padding: var(--_spacer);
+  background: var(--surface-2);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+}
+
+.media-element > img {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: var(--_spacer, 1rem);
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+
+.container {
+  inline-size: min(100% - 4rem, 70rem);
+  margin-inline: auto;
+}
+
+.flow {
+  display: grid;
+  gap: var(--size-3);
+}
+
+.page-header {
+  padding-block: var(--size-9);
+  margin-block-end: var(--size-9);
+  background: var(--gradient-16);
+  color: var(--gray-0);
+  box-shadow: var(--shadow-2);
+}
+
+.page-title {
+  font-size: var(--font-size-fluid-3);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-fluid-1);
+}
+
+.section-title {
+  padding-inline-start: var(--size-6);
+  margin-block: var(--size-9) var(--size-3);
+}
+
+.body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #a265cd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes moveButton {
+  50% {
+    width: 370px;
+  }
+  100% {
+    width: 400px;
+  }
+}
+
+.buttonii {
+  position: relative;
+  height: 100px;
+  width: 400px;
+  border-radius: 50px;
+  background-color: #8b3fc0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none !important;
+}
+
+.buttonAnimation {
+  animation: 0.6s moveButton ease-in-out 0.5s;
+}
+
+@keyframes moveAdded {
+  0% {
+    visibility: visible;
+    font-size: 0px;
+  }
+  50% {
+    visibility: visible;
+    font-size: 30px;
+  }
+  100% {
+    visibility: visible;
+    font-size: 35px;
+  }
+}
+
+.buttonAnimation::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+  content: "Added";
+  color: white;
+  text-transform: uppercase;
+  font-family: "Noto Sans JP", sans-serif;
+  animation: 0.6s moveAdded ease-out 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.cart {
+  fill: white;
+}
+
+@keyframes moveCart {
+  10% {
+    transform: rotate(-15deg);
+  }
+  20% {
+    transform: rotate(-2deg) translate(30px, 0px);
+  }
+  100% {
+    transform: rotate(0deg) translate(350px, 0px);
+    visibility: hidden;
+  }
+}
+
+.cartAnimation {
+  animation: 0.5s moveCart ease-in;
+  animation-fill-mode: forwards;
+}
+
+.text {
+  position: relative;
+  color: white;
+  font-size: 35px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: bold;
+  margin-left: 15px;
+  text-transform: uppercase;
+}
+
+.text::before {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: 20px;
+  background-color: white;
+  top: 25px;
+  left: -80px;
+}
+
+.text::after {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: 20px;
+  background-color: white;
+  top: 25px;
+  left: -80px;
+  transform: rotate(90deg);
+}
+
+@keyframes moveText {
+  10% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(350px, 0px);
+    visibility: hidden;
+  }
+}
+
+.textAnimation {
+  animation: 0.5s moveText ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveFirstSign {
+  5% {
+    top: 15px;
+  }
+  60% {
+    left: -200px;
+    width: 100px;
+  }
+  100% {
+    top: 15px;
+    left: -280px;
+    width: 200px;
+    visibility: hidden;
+  }
+}
+
+.textAnimation::before {
+  animation: 0.5s moveFirstSign ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveSecondSign {
+  5% {
+    transform: rotate(180deg);
+    top: 30px;
+    left: -75px;
+  }
+  60% {
+    transform: rotate(180deg);
+    left: -155px;
+    top: 30px;
+    width: 80px;
+  }
+  100% {
+    width: 170px;
+    top: 30px;
+    left: -245px;
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
+}
+
+.textAnimation::after {
+  animation: 0.5s moveSecondSign ease-in;
+  animation-fill-mode: forwards;
+} */

@@ -1,0 +1,22 @@
+.AddShoppingCartIcon {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50px;
+  background-color: rgb(232, 246, 234);
+  color: rgb(59, 183, 126);
+  border: 1px solid rgb(204, 231, 208);
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  padding: 5px;
+}
+.RatingReview {
+  font-size: 13px;
+}
+@media screen and (max-width: 600px) {
+  .AddShoppingCartIcon {
+    display: none;
+  }
+}

@@ -1,0 +1,19 @@
+.inputBox > span {
+  font-family: "Roboto";
+  animation: sliding 14s linear infinite;
+  display: block;
+}
+.navigation ul li {
+  transition: 0.5s;
+}
+.navigation ul li:hover {
+  color: #3bb77e;
+}
+@keyframes sliding {
+  0% {
+    transform: translateX(110%);
+  }
+  100% {
+    transform: translateX(-110%);
+  }
+}
